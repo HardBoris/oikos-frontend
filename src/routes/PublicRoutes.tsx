@@ -1,15 +1,16 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import { Home, LogIn, SignUp } from "../pages";
-import {} from "../pages/LogIn";
-import {} from "../pages/SignUp";
+import { Route, Routes } from "react-router-dom";
+import { Home, Purchases } from "../pages";
+import { Production } from "../pages/Production";
+import { Recipes } from "../pages/Recipes";
 
 export const PublicRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="login" element={<LogIn />} />
-      <Route path="signup" element={<SignUp />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="/" element={<Home />}>
+        <Route path="purchases" element={<Purchases />} />
+        <Route path="recipes" element={<Recipes />} />
+        <Route path="production" element={<Production />} />
+      </Route>
     </Routes>
   );
 };

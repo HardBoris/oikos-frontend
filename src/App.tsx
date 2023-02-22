@@ -7,6 +7,8 @@ import { ToastContainer } from "react-toastify";
 export const App = () => {
   return (
     <>
+      <AppRouter />
+
       {
         <ToastContainer
           position="top-center"
@@ -20,7 +22,6 @@ export const App = () => {
           pauseOnHover
         />
       }
-      <AppRouter />
     </>
   );
 };

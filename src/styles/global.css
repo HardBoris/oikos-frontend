@@ -31,8 +31,6 @@ ul {
 }
 
 body {
-  /* width: 100vw;
-  height: 100vh; */
   color: var(--primary-font);
   background-color: var(--secondary);
 }
@@ -41,5 +39,4 @@ body {
   width: 100vw;
   height: 100vh;
   background: var(--primary);
-  /* font-size: calc(10px + 2vmin); */
 }
