@@ -1,0 +1,45 @@
+body,
+header,
+main,
+footer,
+aside,
+section,
+form,
+input,
+div,
+h1,
+h2,
+p,
+span,
+button,
+ul {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+:root {
+  --yellow-500-ligth: #ffff00;
+  --blue-200-200: #7a7acc;
+  --secondary: #5252cc;
+  --primary-font: #000033;
+  --blue-100-ligth: #ccccff;
+  --primary: #009999;
+  --secondary-font: #e6ffff;
+  --warning: #ff0000;
+}
+
+body {
+  /* width: 100vw;
+  height: 100vh; */
+  color: var(--primary-font);
+  background-color: var(--secondary);
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  background: var(--primary);
+  /* font-size: calc(10px + 2vmin); */
+}

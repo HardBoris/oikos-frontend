@@ -1,0 +1,11 @@
+#bg__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.barney {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
