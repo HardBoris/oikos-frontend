@@ -11,22 +11,41 @@ import "./style.css";
 } from "react-icons/fa"; */
 
 import { BsCart, BsClipboard, BsJournal } from "react-icons/bs";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export const Home = () => {
   const history = useNavigate();
+  const [title, setTitle] = useState("Oikos");
 
   return (
     <>
       <header>
-        <h1>Oikos</h1>
+        <h1>{title}</h1>
+        <nav>
+          <div className="navigator">
+            <Link to="/purchases" onClick={() => setTitle("Compras")}>
+              Compras
+            </Link>
+          </div>
+          <div className="navigator">
+            <Link to="/production" onClick={() => setTitle("Produção")}>
+              Produção
+            </Link>
+          </div>
+          <div className="navigator">
+            <Link to="/recipes" onClick={() => setTitle("Receitas")}>
+              Receitas
+            </Link>
+          </div>
+        </nav>
       </header>
       <main>
-        <aside>
-          {/* <nav style={{ borderBottom: "solid 1px", paddingBottom: "1rem" }}>
+        {/* <aside>
+          <nav style={{ borderBottom: "solid 1px", paddingBottom: "1rem" }}>
             <Link to="/purchases">Compras</Link>
             <Link to="/expenses">Expenses</Link>
-          </nav> */}
+          </nav>
 
           <div className="operaciones">
             <button onClick={() => history("/purchases")}>
@@ -46,7 +65,7 @@ export const Home = () => {
             </button>
             Producción
           </div>
-        </aside>
+        </aside> */}
         <section>
           <Outlet />
         </section>
