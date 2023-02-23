@@ -14,10 +14,15 @@ import { BsCart, BsClipboard, BsJournal } from "react-icons/bs";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logo from "../../logo.svg";
+import { useAuth } from "../../context/UserContext";
 
 export const Home = () => {
-  const history = useNavigate();
+  const { signOut } = useAuth();
   const [title, setTitle] = useState("Oikos");
+  const handleOut = () => {
+    setTitle("Oikos");
+    signOut();
+  };
 
   return (
     <>
@@ -42,6 +47,11 @@ export const Home = () => {
           <div className="navigator">
             <Link to="/recipes" onClick={() => setTitle("Receitas")}>
               Receitas
+            </Link>
+          </div>
+          <div className="navigator">
+            <Link to="/" onClick={() => handleOut()}>
+              Sair
             </Link>
           </div>
         </nav>

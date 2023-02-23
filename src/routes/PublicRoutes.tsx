@@ -9,9 +9,9 @@ export const PublicRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />}>
         <Route path="" element={<Landing />} />
-        <Route path="purchases" element={<Purchases />} />
-        <Route path="recipes" element={<Recipes />} />
-        <Route path="production" element={<Production />} />
+        {/* <Route path="purchases" element={<Purchases />} /> */}
+        {/* <Route path="recipes" element={<Recipes />} /> */}
+        {/* <Route path="production" element={<Production />} /> */}
       </Route>
     </Routes>
   );

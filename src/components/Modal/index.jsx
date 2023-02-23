@@ -31,7 +31,7 @@ const Modal = ({ children, isOpen, setIsOpen }) => {
           padding: "0",
         },
         overlay: {
-          backgroundColor: "var(--purple-shadow)",
+          backgroundColor: "var(--modal-overlay)",
         },
       }}
     >

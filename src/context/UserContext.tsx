@@ -49,8 +49,8 @@ const UserProvider = ({ children }: UserProviderProps) => {
   // const [status, setStatus] = useState(0);
 
   const [data, setData] = useState<AuthState>(() => {
-    const token = localStorage.getItem("@Hinario:token");
-    const user = localStorage.getItem("@Hinario:user");
+    const token = localStorage.getItem("@Oikos:token");
+    const user = localStorage.getItem("@Oikos:user");
 
     if (token && user) {
       return { token, user };
@@ -65,11 +65,11 @@ const UserProvider = ({ children }: UserProviderProps) => {
       .post("/users/login", { email, password })
       .then((response) => {
         const { user, token } = response.data;
-        localStorage.setItem("@Hinario:token", token);
-        localStorage.setItem("@Hinario:user", user);
+        localStorage.setItem("@Oikos:token", token);
+        localStorage.setItem("@Oikos:user", user);
         setData({ user, token });
         toast.update(aviso, {
-          render: "Bem-Vindo ao Meu Hinário!",
+          render: "Bem-Vindo a Oikos!",
           type: "success",
           isLoading: false,
           autoClose: 3000,
@@ -112,8 +112,8 @@ const UserProvider = ({ children }: UserProviderProps) => {
   };
 
   const signOut = () => {
-    localStorage.removeItem("@Hinario:token");
-    localStorage.removeItem("@Hinario:user");
+    localStorage.removeItem("@Oikos:token");
+    localStorage.removeItem("@Oikos:user");
 
     setData({} as AuthState);
     setEmail("");
