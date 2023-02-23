@@ -4,7 +4,7 @@
 
 .data {
   height: 50px;
-  border-top: 2px solid var(--primary-font);
+  /* border-top: 2px solid var(--primary-font); */
   /* border-bottom: 2px solid var(--primary-font); */
   display: flex;
   gap: 50px;

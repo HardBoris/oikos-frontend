@@ -1,0 +1,17 @@
+#bg__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.barney {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.operaciones {
+  width: 100%;
+  height: 30%;
+  border: 2px solid black;
+}

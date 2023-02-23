@@ -1,13 +1,18 @@
+import { SignForm } from "./signForm";
+import { SignIntro } from "./signIntro";
+import "../../styles/layout.css";
+
 export const SignUp = () => {
   return (
-    <div>
-      <h1>SignUp</h1>
-      <p>
-        <a href="/login">LogIn</a>
-      </p>
-      <p>
-        <a href="/">Home</a>
-      </p>
+    <div className="group">
+      <div className="form__group sign-set">
+        <div className="sign-intro">
+          <SignIntro />
+        </div>
+        <div className="sign-form">
+          <SignForm />
+        </div>
+      </div>
     </div>
   );
 };

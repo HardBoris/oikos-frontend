@@ -1,0 +1,8 @@
+button {
+  height: 2.5rem;
+  width: 50%;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: bold;
+  /* font-size: 1.2rem; */
+}

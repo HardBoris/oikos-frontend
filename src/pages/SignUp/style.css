@@ -1,0 +1,38 @@
+/* .sign-set {
+  color: var(--oscuridad);
+  width: 300px;
+  height: 480px;
+  margin: auto;
+} */
+
+.sign-intro {
+  height: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: var(--blue-200-200); */
+  /* font-size: 0.75rem; */
+}
+
+.sign-form {
+  height: 400px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* background-color: var(--medio-oscuro); */
+}
+
+@media (min-width: 430px) and (max-width: 768px) {
+  .sign-form {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 769px) {
+  .sign-form {
+    height: 500px;
+  }
+  .sign-set {
+    flex-direction: row-reverse;
+  }
+}
