@@ -4,4 +4,5 @@ form {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  border-radius: 20px;
 }

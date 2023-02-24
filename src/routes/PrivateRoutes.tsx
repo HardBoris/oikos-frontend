@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Home, Purchases } from "../pages";
 import { Production } from "../pages/Production";
 import { Recipes } from "../pages/Recipes";

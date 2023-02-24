@@ -1,18 +1,18 @@
 import { Route, Routes } from "react-router-dom";
-import { Home, Purchases } from "../pages";
+// import { Home, Purchases } from "../pages";
 import { Landing } from "../pages/Landing";
-import { Production } from "../pages/Production";
-import { Recipes } from "../pages/Recipes";
+// import { Production } from "../pages/Production";
+// import { Recipes } from "../pages/Recipes";
 
 export const PublicRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />}>
-        <Route path="" element={<Landing />} />
-        {/* <Route path="purchases" element={<Purchases />} /> */}
-        {/* <Route path="recipes" element={<Recipes />} /> */}
-        {/* <Route path="production" element={<Production />} /> */}
-      </Route>
+      {/* <Route path="/" element={<Home />}> */}
+      <Route path="/" element={<Landing />} />
+      {/* <Route path="purchases" element={<Purchases />} /> */}
+      {/* <Route path="recipes" element={<Recipes />} /> */}
+      {/* <Route path="production" element={<Production />} /> */}
+      {/* </Route> */}
     </Routes>
   );
 };
