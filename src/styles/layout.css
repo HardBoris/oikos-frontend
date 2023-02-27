@@ -4,6 +4,7 @@ header {
   background-color: var(--turquoise-500-400);
   color: var(--turquoise-100-ligth);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: calc(16px + 2vmin);

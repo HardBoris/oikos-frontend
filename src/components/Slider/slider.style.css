@@ -1,0 +1,32 @@
+.box {
+  width: 600px;
+  height: 500px;
+  margin: auto;
+  /* position: relative; */
+}
+
+.box-image {
+  /* position: absolute; */
+  width: 600px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.box-image img {
+  width: 600px;
+  height: 500px;
+  animation: anima;
+  animation-duration: 800ms;
+}
+
+@keyframes anima {
+  from {
+    transform: translate(-50px, 00);
+  }
+  to {
+    transform: translate(0px, 00);
+  }
+}

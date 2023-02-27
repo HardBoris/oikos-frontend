@@ -5,7 +5,8 @@ import Modal from "../../components/Modal";
 import { LogIn } from "../LogIn";
 import { SignUp } from "../SignUp";
 import { BGLogo } from "../../components/Logo";
-import Carousel from "../../components/Carousel";
+// import Carousel from "../../components/Carousel";
+import Slider from "../../components/Slider";
 
 export const Landing = () => {
   const [openLogIn, setOpenLogIn] = useState(false);
@@ -25,8 +26,8 @@ export const Landing = () => {
       </header>
       <main>
         {/* <section> */}
-        <Carousel />
-
+        {/* <Carousel /> */}
+        <Slider />
         {/* <picture>
           <img src={logo} className="oikos-logo" alt="logo" />
         </picture> */}

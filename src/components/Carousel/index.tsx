@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 import { Data } from "../../assets";
 import "./carousel.style.css";
@@ -6,6 +6,7 @@ import "./carousel.style.css";
 const Carousel = () => {
   const data = Data;
   const carousel = useRef(null);
+  // const [intervalo, setIntervalo] = useState(0);
 
   const handleLeftClick = (e: any) => {
     e.preventDefault();
@@ -17,6 +18,19 @@ const Carousel = () => {
 
     carousel.current.scrollLeft += carousel.current.offsetWidth;
   };
+
+  /* const pasa = () => {
+    let slide = data[intervalo];
+
+    setInterval(() => {
+      slide[intervalo].style.display = "none";
+      setIntervalo(intervalo + 1);
+      if (intervalo > data.length) {
+        setIntervalo(0);
+      }
+      slide[intervalo].style.display = "block";
+    }, 3000);
+  }; */
 
   return (
     <div className="container">
