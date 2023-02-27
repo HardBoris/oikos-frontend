@@ -1,4 +1,4 @@
-import logo from "../../logo.svg";
+// import logo from "../../logo.svg";
 import "./landing.layout.css";
 import { useState } from "react";
 import Modal from "../../components/Modal";

@@ -11,11 +11,12 @@ import "./style.css";
 } from "react-icons/fa"; */
 
 // import { BsCart, BsClipboard, BsJournal } from "react-icons/bs";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useState } from "react";
 // import logo from "../../logo.svg";
 import { useAuth } from "../../context/UserContext";
 import { Navigator } from "../../components/Navigator";
+import { Dashboard } from "./dashboard";
 
 export const Home = () => {
   const { signOut } = useAuth();
@@ -32,28 +33,15 @@ export const Home = () => {
         <Navigator setTitle={setTitle} handleOut={handleOut} />
       </header>
       <main>
-        <section>
-          {/* {!Outlet ? (
-          <div className="App">
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Edit <code>src/App.tsx</code> and save to reload.
-              </p>
-              <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Learn React
-              </a>
-            </header>
-          </div>
+        {!Outlet ? (
+          <section>
+            <Dashboard />
+          </section>
         ) : (
-        )} */}
-          <Outlet />
-        </section>
+          <section>
+            <Outlet />
+          </section>
+        )}
       </main>
       <footer>
         <div id="barney">

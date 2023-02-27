@@ -15,3 +15,15 @@
   height: 30%;
   border: 2px solid black;
 }
+
+main .dashboard {
+  width: 90%;
+  height: 90%;
+  border: 2px solid red;
+}
+
+.segmentos {
+  width: 50%;
+  height: 50%;
+  border: blue;
+}

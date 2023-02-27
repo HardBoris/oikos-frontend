@@ -96,20 +96,20 @@ footer {
     display: flex;
   }
 
-  picture {
+  /* picture {
     height: 80%;
     text-align: center;
-  }
+  } */
 
-  aside {
+  /* aside {
     width: 20%;
     height: 100%;
-  }
+  } */
 
-  section {
+  /* section {
     width: 100%;
     height: 100%;
-  }
+  } */
 
   footer {
     height: 8vh;

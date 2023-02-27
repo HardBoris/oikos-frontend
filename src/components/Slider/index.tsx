@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
 // import { Data } from "../../assets";
 import "./slider.style.css";
