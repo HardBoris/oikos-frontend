@@ -10,11 +10,12 @@ import "./style.css";
   FaXRay,
 } from "react-icons/fa"; */
 
-import { BsCart, BsClipboard, BsJournal } from "react-icons/bs";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+// import { BsCart, BsClipboard, BsJournal } from "react-icons/bs";
+import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
-import logo from "../../logo.svg";
+// import logo from "../../logo.svg";
 import { useAuth } from "../../context/UserContext";
+import { Navigator } from "../../components/Navigator";
 
 export const Home = () => {
   const { signOut } = useAuth();
@@ -28,33 +29,7 @@ export const Home = () => {
     <>
       <header>
         <h1>{title}</h1>
-        <nav>
-          <div className="navigator">
-            <Link to="/" onClick={() => setTitle("Oikos")}>
-              Home
-            </Link>
-          </div>
-          <div className="navigator">
-            <Link to="/purchases" onClick={() => setTitle("Compras")}>
-              Compras
-            </Link>
-          </div>
-          <div className="navigator">
-            <Link to="/production" onClick={() => setTitle("Produção")}>
-              Produção
-            </Link>
-          </div>
-          <div className="navigator">
-            <Link to="/recipes" onClick={() => setTitle("Receitas")}>
-              Receitas
-            </Link>
-          </div>
-          <div className="navigator">
-            <Link to="/" onClick={() => handleOut()}>
-              Sair
-            </Link>
-          </div>
-        </nav>
+        <Navigator setTitle={setTitle} handleOut={handleOut} />
       </header>
       <main>
         <section>

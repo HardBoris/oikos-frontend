@@ -29,6 +29,8 @@ ul {
   --secondary-font: #e6ffff;
   --warning: #ff0000;
   --modal-overlay: rgba(122, 122, 204, 0.3);
+  --primary-shadow: rgba(0, 153, 153, 0.3);
+  --secondary-shadow: rgba(82, 82, 204, 0.3);
 }
 
 body {
