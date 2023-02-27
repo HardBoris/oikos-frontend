@@ -3,10 +3,9 @@ header {
   height: 20vh;
   background-color: var(--turquoise-500-400);
   color: var(--turquoise-100-ligth);
-  /* display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid red; */
   font-size: calc(16px + 2vmin);
   text-align: center;
 }

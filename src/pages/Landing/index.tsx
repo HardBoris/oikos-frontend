@@ -5,6 +5,7 @@ import Modal from "../../components/Modal";
 import { LogIn } from "../LogIn";
 import { SignUp } from "../SignUp";
 import { BGLogo } from "../../components/Logo";
+import Carousel from "../../components/Carousel";
 
 export const Landing = () => {
   const [openLogIn, setOpenLogIn] = useState(false);
@@ -24,9 +25,11 @@ export const Landing = () => {
       </header>
       <main>
         {/* <section> */}
-        <picture>
+        <Carousel />
+
+        {/* <picture>
           <img src={logo} className="oikos-logo" alt="logo" />
-        </picture>
+        </picture> */}
 
         <div className="landing-botonera">
           <button onClick={() => setOpenLogIn(true)}>LogIn</button>
