@@ -16,7 +16,6 @@ main {
   height: 70vh;
   color: var(--blue-full-dark);
   font-size: calc(10px + 2vmin);
-  border: 2px solid black;
 }
 
 aside {
@@ -27,7 +26,6 @@ aside {
 section {
   width: 100%;
   height: 100%;
-  border: 2px solid white;
 }
 
 footer {
