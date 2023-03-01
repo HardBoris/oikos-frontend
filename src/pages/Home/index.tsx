@@ -16,7 +16,7 @@ import { useState } from "react";
 // import logo from "../../logo.svg";
 import { useAuth } from "../../context/UserContext";
 import { Navigator } from "../../components/Navigator";
-import { Dashboard } from "./dashboard";
+import { Dashboard } from "../Dashboard";
 
 export const Home = () => {
   const { signOut } = useAuth();
@@ -33,15 +33,9 @@ export const Home = () => {
         <Navigator setTitle={setTitle} handleOut={handleOut} />
       </header>
       <main>
-        {!Outlet ? (
-          <section>
-            <Dashboard />
-          </section>
-        ) : (
-          <section>
-            <Outlet />
-          </section>
-        )}
+        <section>
+          <Outlet />
+        </section>
       </main>
       <footer>
         <div id="barney">

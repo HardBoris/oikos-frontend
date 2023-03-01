@@ -1,3 +1,5 @@
+import "./dashboard.style.css";
+
 export const Dashboard = () => {
   return (
     <>
