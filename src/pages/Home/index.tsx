@@ -13,24 +13,36 @@ import "./style.css";
 // import { BsCart, BsClipboard, BsJournal } from "react-icons/bs";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
-// import logo from "../../logo.svg";
 import { useAuth } from "../../context/UserContext";
 import { Navigator } from "../../components/Navigator";
-import { Dashboard } from "../Dashboard";
 
 export const Home = () => {
   const { signOut } = useAuth();
   const [title, setTitle] = useState("Oikos");
+  const [openDesire, setOpenDesire] = useState(false);
+
   const handleOut = () => {
+    console.log("hola");
+    handleDesire();
     setTitle("Oikos");
     signOut();
+  };
+
+  const handleDesire = () => {
+    setOpenDesire(!openDesire);
   };
 
   return (
     <>
       <header>
         <h1>{title}</h1>
-        <Navigator setTitle={setTitle} handleOut={handleOut} />
+        <Navigator
+          setTitle={setTitle}
+          handleOut={() => handleOut()}
+          openDesire={openDesire}
+          setOpenDesire={setOpenDesire}
+          handleDesire={() => handleDesire()}
+        />
       </header>
       <main>
         <section>

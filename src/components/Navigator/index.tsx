@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
+import { Desire } from "../Desire";
+import Modal from "../Modal";
 import "./navigator.style.css";
 
-export const Navigator = ({ setTitle, handleOut }: any) => {
+export const Navigator = ({
+  setTitle,
+  handleOut,
+  openDesire,
+  setOpenDesire,
+  handleDesire,
+}: any) => {
   return (
     <nav>
       <div className="navigator">
@@ -25,10 +33,13 @@ export const Navigator = ({ setTitle, handleOut }: any) => {
         </Link>
       </div>
       <div className="navigator">
-        <Link to="/" onClick={() => handleOut()}>
+        <Link to="/" onClick={() => setOpenDesire(true)}>
           Sair
         </Link>
       </div>
+      <Modal isOpen={openDesire} setIsOpen={handleDesire}>
+        <Desire handleOut={handleOut} handleDesire={handleDesire} />
+      </Modal>
     </nav>
   );
 };
