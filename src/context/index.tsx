@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { PurchaseProvider } from "./PurchaseContext";
 import { UserProvider } from "./UserContext";
 
 interface AppProviderProps {
@@ -6,5 +7,7 @@ interface AppProviderProps {
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => (
-  <UserProvider>{children}</UserProvider>
+  <UserProvider>
+    <PurchaseProvider>{children}</PurchaseProvider>
+  </UserProvider>
 );

@@ -22,7 +22,6 @@ export const Home = () => {
   const [openDesire, setOpenDesire] = useState(false);
 
   const handleOut = () => {
-    console.log("hola");
     handleDesire();
     setTitle("Oikos");
     signOut();

@@ -1,23 +1,88 @@
+// import { useEffect, useState } from "react";
+import { Input } from "../../components/Input";
+import { Purchase, usePurchase } from "../../context/PurchaseContext";
 import "../styles.css";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { Button } from "../../components/Button";
+import "./purchase.style.css";
+import { Formulario } from "../../components/Form";
+
+const signInSchema = yup.object().shape({
+  ingredientName: yup.string().required("Campo obrigatório"),
+  ingredientQty: yup.string().required("Campo obrigatório"),
+  measurementUnit: yup.string().required("Campo obrigatório"),
+  ingredientPrice: yup.string().required("Campo obrigatório"),
+});
+
+interface ingredientData {
+  ingredientName: string;
+  ingredientQty: string;
+  measurementUnit: string;
+  ingredientPrice: string;
+}
 
 export const Purchases = () => {
+  // const [compra, setCompra] = useState({} as Purchase)
+  const { purchases, Compra } = usePurchase();
+  // const compra = purchases[0];
+  const fecha = (objeto: Purchase) => objeto.purchaseDate.split("T")[0];
+
+  // console.log(fecha);
+
+  const {
+    formState: { errors },
+    register,
+    handleSubmit,
+  } = useForm<ingredientData>({ resolver: yupResolver(signInSchema) });
+
+  const sender = (data: ingredientData) => {
+    Compra(data);
+  };
+
   return (
     <>
-      {/* <div className="titulo">
-        <h1>Compras</h1>
-      </div> */}
       <div>
-        {/* <div className="data">
-          <p>Data da compra</p>
-          <p>22 de fevereiro de 2022</p>
-        </div> */}
-        {/* <div className="column__head">
-          <p>ingrediente</p>
-          <p>Unidade de medida</p>
-          <p>Quantidade</p>
-          <p>Valor do ingrediente</p>
-        </div> */}
-        <table>
+        <h1>hola</h1>
+        <div>
+          {purchases.map((item) => (
+            // <div key={item.purchaseId}>{item.purchaseDate.split("T")[0]}</div>
+            <div key={item.purchaseId}>{fecha(item)}</div>
+          ))}
+        </div>
+        <Formulario onSubmit={handleSubmit(sender)}>
+          <div className="datos">
+            <Input
+              register={register}
+              name="ingredientName"
+              error={errors.ingredientName?.message}
+              label="Ingrediente"
+            />
+            <Input
+              register={register}
+              name="ingredientQty"
+              error={errors.ingredientQty?.message}
+              label="Cantidad"
+            />
+            <Input
+              register={register}
+              name="measurementUnit"
+              error={errors.measurementUnit?.message}
+              label="Unidad"
+            />
+            <Input
+              register={register}
+              name="ingredientPrice"
+              error={errors.ingredientPrice?.message}
+              label="Precio"
+            />
+            <div className="accion">
+              <Button type="submit">+</Button>
+            </div>
+          </div>
+        </Formulario>
+        {/* <table>
           <thead>
             <tr>
               <td>23/02/2023</td>
@@ -49,7 +114,7 @@ export const Purchases = () => {
               </tbody>
             </table>
           </tbody>
-        </table>
+        </table> */}
       </div>
       <div></div>
     </>

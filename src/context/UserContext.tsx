@@ -9,9 +9,15 @@ interface UserProviderProps {
   children: ReactNode;
 }
 
+interface User {
+  userId: string;
+  userName: string;
+  email: string;
+}
+
 interface AuthState {
   token: string;
-  user: string;
+  user: User;
 }
 
 interface SignInCredentials {
@@ -20,7 +26,7 @@ interface SignInCredentials {
 }
 
 interface UserContextData {
-  user: string;
+  user: User;
   token: string;
   signIn: (credentials: SignInCredentials) => Promise<void>;
   signOut: () => void;
@@ -53,7 +59,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
     const user = localStorage.getItem("@Oikos:user");
 
     if (token && user) {
-      return { token, user };
+      return { token, user: JSON.parse(user) };
     }
 
     return {} as AuthState;
@@ -62,11 +68,12 @@ const UserProvider = ({ children }: UserProviderProps) => {
   const signIn = async ({ email, password }: SignInCredentials) => {
     const aviso = toast.loading("Por Favor espere...");
     await api
-      .post("/users/login", { email, password })
+      .post("/oikos-api/users/login", { email, password })
       .then((response) => {
         const { user, token } = response.data;
+        console.log(user);
         localStorage.setItem("@Oikos:token", token);
-        localStorage.setItem("@Oikos:user", user);
+        localStorage.setItem("@Oikos:user", JSON.stringify(user));
         setData({ user, token });
         toast.update(aviso, {
           render: "Bem-Vindo a Oikos!",
@@ -88,7 +95,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
   const signUp = async ({ email, password }: SignInCredentials) => {
     const aviso = toast.loading("Por Favor espere...");
     await api
-      .post("/users/register", { email, password })
+      .post("/oikos-api/users/register", { email, password })
       .then((response) => {
         console.log(response.data);
         const { email } = response.data;
