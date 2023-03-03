@@ -25,7 +25,7 @@ interface ingredientData {
 
 export const Purchases = () => {
   // const [compra, setCompra] = useState({} as Purchase)
-  const { purchases, Compra } = usePurchase();
+  const { purchases, Compra, itemCompra } = usePurchase();
   // const compra = purchases[0];
   const fecha = (objeto: Purchase) => objeto.purchaseDate.split("T")[0];
 
@@ -38,13 +38,14 @@ export const Purchases = () => {
   } = useForm<ingredientData>({ resolver: yupResolver(signInSchema) });
 
   const sender = (data: ingredientData) => {
-    Compra(data);
+    itemCompra(data);
   };
 
   return (
     <>
       <div>
         <h1>hola</h1>
+        <button onClick={() => Compra()}>nueva compra</button>
         <div>
           {purchases.map((item) => (
             // <div key={item.purchaseId}>{item.purchaseDate.split("T")[0]}</div>

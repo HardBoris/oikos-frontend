@@ -40,7 +40,8 @@ interface PurchaseContextData {
   ingredient: PurchaseDetail;
   //   purchaseDetails: PurchaseDetail[];
   Shopping: () => void;
-  Compra: (data: ingredientData) => Promise<void>;
+  Compra: () => void;
+  itemCompra: (data: ingredientData) => Promise<void>;
 }
 
 export const PurchaseContext = createContext<PurchaseContextData>(
@@ -52,6 +53,7 @@ const usePurchase = () => useContext(PurchaseContext);
 const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
   const { token } = useAuth();
   const [purchases, setPurchases] = useState<Purchase[]>([]);
+  const [compraId, setCompraId] = useState("");
   // const [purchaseDetails, setPurchaseDetail] = useState<PurchaseDetail[]>([]);
   const [ingredient, setIngredient] = useState<PurchaseDetail>(
     {} as PurchaseDetail
@@ -73,22 +75,50 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       });
   };
 
-  const Compra = async (data: ingredientData) => {
-    await api
-      .post("/oikos-api/purchases/:purchaseId", { data })
+  const Compra = () => {
+    api
+      .post(
+        "/oikos-api/purchases",
+        {},
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
-        setIngredient(response.data);
+        setCompraId(response.data.purchaseId);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const itemCompra = async (data: ingredientData) => {
+    console.log(compraId);
+    await api
+      .post(`/oikos-api/purchases/${compraId}`, data, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
       })
       .catch((error) => console.log(error));
   };
 
   useEffect(() => {
     Shopping();
-  });
+  }, []);
 
   return (
     <PurchaseContext.Provider
-      value={{ purchases, ingredient, /* purchaseDetails */ Shopping, Compra }}
+      value={{
+        purchases,
+        ingredient,
+        /* purchaseDetails */ Shopping,
+        Compra,
+        itemCompra,
+      }}
     >
       {children}
     </PurchaseContext.Provider>
