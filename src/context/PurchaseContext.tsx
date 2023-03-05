@@ -75,6 +75,10 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       });
   };
 
+  useEffect(() => {
+    Shopping();
+  }, []);
+
   const Compra = () => {
     api
       .post(
@@ -106,9 +110,16 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       .catch((error) => console.log(error));
   };
 
-  useEffect(() => {
-    Shopping();
-  }, []);
+  const eliminaCompra = async (id: object) => {
+    await api
+      .delete("/oikos-api/purchases", {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log(error));
+  };
 
   return (
     <PurchaseContext.Provider

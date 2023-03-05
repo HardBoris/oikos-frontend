@@ -46,10 +46,12 @@ export const Purchases = () => {
       <div>
         <h1>hola</h1>
         <button onClick={() => Compra()}>nueva compra</button>
-        <div>
+        <div className="list-card">
           {purchases.map((item) => (
-            // <div key={item.purchaseId}>{item.purchaseDate.split("T")[0]}</div>
-            <div key={item.purchaseId}>{fecha(item)}</div>
+            <div className="item-card">
+              <div key={item.purchaseId}>{fecha(item)}</div>
+              <button className="eliminator-button">X</button>
+            </div>
           ))}
         </div>
         <Formulario onSubmit={handleSubmit(sender)}>
