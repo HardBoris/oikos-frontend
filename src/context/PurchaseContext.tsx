@@ -42,6 +42,7 @@ interface PurchaseContextData {
   Shopping: () => void;
   Compra: () => void;
   itemCompra: (data: ingredientData) => Promise<void>;
+  eliminaCompra: (id: string) => void;
 }
 
 export const PurchaseContext = createContext<PurchaseContextData>(
@@ -75,9 +76,9 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       });
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     Shopping();
-  }, []);
+  }, []); */
 
   const Compra = () => {
     api
@@ -110,9 +111,9 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       .catch((error) => console.log(error));
   };
 
-  const eliminaCompra = async (id: object) => {
+  const eliminaCompra = async (id: string) => {
     await api
-      .delete("/oikos-api/purchases", {
+      .delete(`/oikos-api/purchases/${id}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -126,9 +127,10 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       value={{
         purchases,
         ingredient,
-        /* purchaseDetails */ Shopping,
+        Shopping,
         Compra,
         itemCompra,
+        eliminaCompra,
       }}
     >
       {children}

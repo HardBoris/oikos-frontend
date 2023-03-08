@@ -12,14 +12,21 @@ import "./style.css";
 
 // import { BsCart, BsClipboard, BsJournal } from "react-icons/bs";
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/UserContext";
 import { Navigator } from "../../components/Navigator";
+import { usePurchase } from "../../context/PurchaseContext";
 
 export const Home = () => {
   const { signOut } = useAuth();
+  const { Shopping } = usePurchase();
+
   const [title, setTitle] = useState("Oikos");
   const [openDesire, setOpenDesire] = useState(false);
+
+  useEffect(() => {
+    Shopping();
+  }, []);
 
   const handleOut = () => {
     handleDesire();

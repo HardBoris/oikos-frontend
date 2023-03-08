@@ -25,7 +25,8 @@ interface ingredientData {
 
 export const Purchases = () => {
   // const [compra, setCompra] = useState({} as Purchase)
-  const { purchases, Compra, itemCompra } = usePurchase();
+  const { purchases, Compra, itemCompra, eliminaCompra, Shopping } =
+    usePurchase();
   // const compra = purchases[0];
   const fecha = (objeto: Purchase) => objeto.purchaseDate.split("T")[0];
 
@@ -41,16 +42,26 @@ export const Purchases = () => {
     itemCompra(data);
   };
 
+  const handlecompra = () => {
+    Compra();
+    Shopping();
+  };
+
   return (
     <>
       <div>
         <h1>hola</h1>
-        <button onClick={() => Compra()}>nueva compra</button>
+        <button onClick={() => handlecompra()}>nueva compra</button>
         <div className="list-card">
           {purchases.map((item) => (
-            <div className="item-card">
-              <div key={item.purchaseId}>{fecha(item)}</div>
-              <button className="eliminator-button">X</button>
+            <div className="item-card" key={item.purchaseId}>
+              <div>{fecha(item)}</div>
+              <button
+                className="eliminator-button"
+                onClick={() => eliminaCompra(item.purchaseId)}
+              >
+                X
+              </button>
             </div>
           ))}
         </div>
