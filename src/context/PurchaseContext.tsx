@@ -2,11 +2,12 @@ import {
   createContext,
   ReactNode,
   useContext,
-  useEffect,
+  // useEffect,
   useState,
 } from "react";
 import { localApi as api } from "../services/api";
 import { useAuth } from "./UserContext";
+import { useNavigate } from "react-router-dom";
 
 interface PurchaseProviderProps {
   children: ReactNode;
@@ -38,7 +39,7 @@ interface ingredientData {
 interface PurchaseContextData {
   purchases: Purchase[];
   ingredient: PurchaseDetail;
-  //   purchaseDetails: PurchaseDetail[];
+  // purchaseDetails: PurchaseDetail[];
   Shopping: () => void;
   Compra: () => void;
   itemCompra: (data: ingredientData) => Promise<void>;
@@ -52,6 +53,7 @@ export const PurchaseContext = createContext<PurchaseContextData>(
 const usePurchase = () => useContext(PurchaseContext);
 
 const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
+  const history = useNavigate();
   const { token } = useAuth();
   const [purchases, setPurchases] = useState<Purchase[]>([]);
   const [compraId, setCompraId] = useState("");
@@ -92,7 +94,8 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         }
       )
       .then((response) => {
-        setCompraId(response.data.purchaseId);
+        history(`/purchases/${response.data.purchaseId}`);
+        // setCompraId(response.data.purchaseId);
       })
       .catch((error) => console.log(error));
   };

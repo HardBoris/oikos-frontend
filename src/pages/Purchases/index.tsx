@@ -8,6 +8,8 @@ import * as yup from "yup";
 import { Button } from "../../components/Button";
 import "./purchase.style.css";
 import { Formulario } from "../../components/Form";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 const signInSchema = yup.object().shape({
   ingredientName: yup.string().required("Campo obrigatório"),
@@ -29,6 +31,7 @@ export const Purchases = () => {
     usePurchase();
   // const compra = purchases[0];
   const fecha = (objeto: Purchase) => objeto.purchaseDate.split("T")[0];
+  // const [shoppingList, setShoppingList] = useState(purchases);
 
   // console.log(fecha);
 
@@ -47,6 +50,12 @@ export const Purchases = () => {
     Shopping();
   };
 
+  const hendleElimina = (id: string) => {
+    eliminaCompra(id);
+    Shopping();
+    // setShoppingList(shoppingList.filter((item) => item.purchaseId !== id));
+  };
+
   return (
     <>
       <div>
@@ -58,7 +67,7 @@ export const Purchases = () => {
               <div>{fecha(item)}</div>
               <button
                 className="eliminator-button"
-                onClick={() => eliminaCompra(item.purchaseId)}
+                onClick={() => hendleElimina(item.purchaseId)}
               >
                 X
               </button>
@@ -96,41 +105,10 @@ export const Purchases = () => {
             </div>
           </div>
         </Formulario>
-        {/* <table>
-          <thead>
-            <tr>
-              <td>23/02/2023</td>
-            </tr>
-          </thead>
-          <tbody>
-            <table>
-              <thead>
-                <tr>
-                  <th>ingrediente</th>
-                  <th>Unidade de medida</th>
-                  <th>Quantidade</th>
-                  <th>Valor do ingrediente</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>trigo</td>
-                  <td>kg</td>
-                  <td>10</td>
-                  <td>56</td>
-                </tr>
-                <tr>
-                  <td>açúcar</td>
-                  <td>kg</td>
-                  <td>10</td>
-                  <td>45</td>
-                </tr>
-              </tbody>
-            </table>
-          </tbody>
-        </table> */}
       </div>
-      <div></div>
+      <div>
+        <Outlet />
+      </div>
     </>
   );
 };
