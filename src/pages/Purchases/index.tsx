@@ -35,15 +35,15 @@ export const Purchases = () => {
 
   // console.log(fecha);
 
-  const {
+  /* const {
     formState: { errors },
     register,
     handleSubmit,
-  } = useForm<ingredientData>({ resolver: yupResolver(signInSchema) });
+  } = useForm<ingredientData>({ resolver: yupResolver(signInSchema) }); */
 
-  const sender = (data: ingredientData) => {
+  /* const sender = (data: ingredientData) => {
     itemCompra(data);
-  };
+  }; */
 
   const handlecompra = () => {
     Compra();
@@ -74,7 +74,7 @@ export const Purchases = () => {
             </div>
           ))}
         </div>
-        <Formulario onSubmit={handleSubmit(sender)}>
+        {/* <Formulario onSubmit={handleSubmit(sender)}>
           <div className="datos">
             <Input
               register={register}
@@ -104,7 +104,7 @@ export const Purchases = () => {
               <Button type="submit">+</Button>
             </div>
           </div>
-        </Formulario>
+        </Formulario> */}
       </div>
       <div>
         <Outlet />

@@ -42,7 +42,7 @@ interface PurchaseContextData {
   // purchaseDetails: PurchaseDetail[];
   Shopping: () => void;
   Compra: () => void;
-  itemCompra: (data: ingredientData) => Promise<void>;
+  itemCompra: (data: ingredientData, purchaseId: string) => Promise<void>;
   eliminaCompra: (id: string) => void;
 }
 
@@ -100,10 +100,9 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       .catch((error) => console.log(error));
   };
 
-  const itemCompra = async (data: ingredientData) => {
-    console.log(compraId);
+  const itemCompra = async (data: ingredientData, purchaseId: string) => {
     await api
-      .post(`/oikos-api/purchases/${compraId}`, data, {
+      .post(`/oikos-api/purchases/${purchaseId}`, data, {
         headers: {
           authorization: `Bearer ${token}`,
         },
