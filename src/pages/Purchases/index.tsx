@@ -1,15 +1,16 @@
 // import { useEffect, useState } from "react";
-import { Input } from "../../components/Input";
+// import { Input } from "../../components/Input";
 import { Purchase, usePurchase } from "../../context/PurchaseContext";
 import "../styles.css";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+// import { useForm } from "react-hook-form";
+// import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Button } from "../../components/Button";
+// import { Button } from "../../components/Button";
 import "./purchase.style.css";
-import { Formulario } from "../../components/Form";
-import { useState } from "react";
+// import { Formulario } from "../../components/Form";
+// import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const signInSchema = yup.object().shape({
   ingredientName: yup.string().required("Campo obrigatório"),
@@ -26,6 +27,7 @@ interface ingredientData {
 }
 
 export const Purchases = () => {
+  const navigate = useNavigate();
   // const [compra, setCompra] = useState({} as Purchase)
   const { purchases, Compra, itemCompra, eliminaCompra, Shopping } =
     usePurchase();
@@ -64,7 +66,12 @@ export const Purchases = () => {
         <div className="list-card">
           {purchases.map((item) => (
             <div className="item-card" key={item.purchaseId}>
-              <div>{fecha(item)}</div>
+              <div
+                role="button"
+                onClick={() => navigate(`/purchases/${item.purchaseId}`)}
+              >
+                {fecha(item)}
+              </div>
               <button
                 className="eliminator-button"
                 onClick={() => hendleElimina(item.purchaseId)}

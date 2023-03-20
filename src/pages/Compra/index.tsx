@@ -6,6 +6,7 @@ import { Formulario } from "../../components/Form";
 import { Input } from "../../components/Input";
 import { usePurchase } from "../../context/PurchaseContext";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const signInSchema = yup.object().shape({
   ingredientName: yup.string().required("Campo obrigatório"),
@@ -23,7 +24,7 @@ interface ingredientData {
 
 export const ListaDeCompras = () => {
   const params = useParams();
-  const { itemCompra } = usePurchase();
+  const { itemCompra, shoppingList, tata } = usePurchase();
   const {
     formState: { errors },
     register,
@@ -31,9 +32,16 @@ export const ListaDeCompras = () => {
   } = useForm<ingredientData>({ resolver: yupResolver(signInSchema) });
 
   const sender = (data: ingredientData) => {
-    console.log(params);
     itemCompra(data, params.id);
   };
+
+  useEffect(() => {
+    shoppingList(params.id);
+  }, []);
+
+  const detalles = tata.purchaseDetails;
+
+  console.log(detalles);
 
   return (
     <>
@@ -71,6 +79,19 @@ export const ListaDeCompras = () => {
           </div>
         </div>
       </Formulario>
+      <div style={{ width: "100%", height: "200px", backgroundColor: "red" }}>
+        {detalles.length !== 0 ? (
+          detalles.map((item) => (
+            <div key={item.purchaseDetailId}>
+              <p>{item.ingredientName}</p>
+              <p>{item.ingredientQty}</p>
+              <p>{item.ingredientPrice}</p>
+            </div>
+          ))
+        ) : (
+          <div>sin datos</div>
+        )}
+      </div>
     </>
   );
 };

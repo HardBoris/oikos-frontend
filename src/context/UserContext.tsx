@@ -71,7 +71,6 @@ const UserProvider = ({ children }: UserProviderProps) => {
       .post("/oikos-api/users/login", { email, password })
       .then((response) => {
         const { user, token } = response.data;
-        console.log(user);
         localStorage.setItem("@Oikos:token", token);
         localStorage.setItem("@Oikos:user", JSON.stringify(user));
         setData({ user, token });

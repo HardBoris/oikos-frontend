@@ -2,6 +2,7 @@ import {
   createContext,
   ReactNode,
   useContext,
+  useEffect,
   // useEffect,
   useState,
 } from "react";
@@ -40,7 +41,9 @@ interface PurchaseContextData {
   purchases: Purchase[];
   ingredient: PurchaseDetail;
   // purchaseDetails: PurchaseDetail[];
+  tata: Purchase;
   Shopping: () => void;
+  shoppingList: (purchaseId: string) => void;
   Compra: () => void;
   itemCompra: (data: ingredientData, purchaseId: string) => Promise<void>;
   eliminaCompra: (id: string) => void;
@@ -56,7 +59,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
   const history = useNavigate();
   const { token } = useAuth();
   const [purchases, setPurchases] = useState<Purchase[]>([]);
-  const [compraId, setCompraId] = useState("");
+  const [tata, setTata] = useState<Purchase>({} as Purchase);
   // const [purchaseDetails, setPurchaseDetail] = useState<PurchaseDetail[]>([]);
   const [ingredient, setIngredient] = useState<PurchaseDetail>(
     {} as PurchaseDetail
@@ -70,7 +73,6 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         },
       })
       .then((response) => {
-        console.log(response);
         setPurchases(response.data);
       })
       .catch((error) => {
@@ -78,9 +80,25 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       });
   };
 
-  /* useEffect(() => {
+  const shoppingList = async (purchaseId: string) => {
+    console.log(purchaseId);
+    await api
+      .get(`/oikos-api/purchases/${purchaseId}`, {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setTata(response.data);
+        console.log(tata);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
     Shopping();
-  }, []); */
+  }, []);
 
   const Compra = () => {
     api
@@ -129,6 +147,8 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       value={{
         purchases,
         ingredient,
+        tata,
+        shoppingList,
         Shopping,
         Compra,
         itemCompra,
