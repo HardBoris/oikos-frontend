@@ -81,7 +81,6 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
   };
 
   const shoppingList = async (purchaseId: string) => {
-    console.log(purchaseId);
     await api
       .get(`/oikos-api/purchases/${purchaseId}`, {
         headers: {
@@ -89,9 +88,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         },
       })
       .then((response) => {
-        console.log(response.data);
         setTata(response.data);
-        console.log(tata);
       })
       .catch((error) => console.log(error));
   };

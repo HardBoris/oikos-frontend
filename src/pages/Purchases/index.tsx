@@ -11,6 +11,7 @@ import "./purchase.style.css";
 // import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const signInSchema = yup.object().shape({
   ingredientName: yup.string().required("Campo obrigatório"),
@@ -34,6 +35,11 @@ export const Purchases = () => {
   // const compra = purchases[0];
   const fecha = (objeto: Purchase) => objeto.purchaseDate.split("T")[0];
   // const [shoppingList, setShoppingList] = useState(purchases);
+  // const [ssd, setSsd] = useState(purchases);
+
+  useEffect(() => {
+    Shopping();
+  }, [Shopping, purchases]);
 
   // console.log(fecha);
 
@@ -49,13 +55,14 @@ export const Purchases = () => {
 
   const handlecompra = () => {
     Compra();
-    Shopping();
+    // Shopping();
   };
 
   const hendleElimina = (id: string) => {
     eliminaCompra(id);
-    Shopping();
+    // Shopping();
     // setShoppingList(shoppingList.filter((item) => item.purchaseId !== id));
+    // setSsd(ssd.filter((item) => item.purchaseId !== id));
   };
 
   return (
@@ -81,37 +88,6 @@ export const Purchases = () => {
             </div>
           ))}
         </div>
-        {/* <Formulario onSubmit={handleSubmit(sender)}>
-          <div className="datos">
-            <Input
-              register={register}
-              name="ingredientName"
-              error={errors.ingredientName?.message}
-              label="Ingrediente"
-            />
-            <Input
-              register={register}
-              name="ingredientQty"
-              error={errors.ingredientQty?.message}
-              label="Cantidad"
-            />
-            <Input
-              register={register}
-              name="measurementUnit"
-              error={errors.measurementUnit?.message}
-              label="Unidad"
-            />
-            <Input
-              register={register}
-              name="ingredientPrice"
-              error={errors.ingredientPrice?.message}
-              label="Precio"
-            />
-            <div className="accion">
-              <Button type="submit">+</Button>
-            </div>
-          </div>
-        </Formulario> */}
       </div>
       <div>
         <Outlet />
