@@ -40,7 +40,7 @@ interface ingredientData {
 interface PurchaseContextData {
   purchases: Purchase[];
   ingredient: PurchaseDetail;
-  // purchaseDetails: PurchaseDetail[];
+  purchaseDetails: PurchaseDetail[];
   tata: Purchase;
   Shopping: () => void;
   shoppingList: (purchaseId: string) => void;
@@ -60,7 +60,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
   const { token } = useAuth();
   const [purchases, setPurchases] = useState<Purchase[]>([]);
   const [tata, setTata] = useState<Purchase>({} as Purchase);
-  // const [purchaseDetails, setPurchaseDetail] = useState<PurchaseDetail[]>([]);
+  const [purchaseDetails, setPurchaseDetail] = useState<PurchaseDetail[]>([]);
   const [ingredient, setIngredient] = useState<PurchaseDetail>(
     {} as PurchaseDetail
   );
@@ -88,6 +88,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         },
       })
       .then((response) => {
+        console.log(response.data.purchaseDetails);
         setTata(response.data);
       })
       .catch((error) => console.log(error));
@@ -144,6 +145,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
       value={{
         purchases,
         ingredient,
+        purchaseDetails,
         tata,
         shoppingList,
         Shopping,

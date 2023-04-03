@@ -7,6 +7,7 @@ import { Input } from "../../components/Input";
 import { usePurchase } from "../../context/PurchaseContext";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Modal from "../../components/Modal";
 
 const signInSchema = yup.object().shape({
   ingredientName: yup.string().required("Campo obrigatório"),
@@ -23,6 +24,7 @@ interface ingredientData {
 }
 
 export const ListaDeCompras = () => {
+  const [openForm, setOpenForm] = useState(false);
   const [video, setVideo] = useState([]);
   const params = useParams();
   const { itemCompra, shoppingList, tata } = usePurchase();
@@ -35,6 +37,7 @@ export const ListaDeCompras = () => {
   const sender = (data: ingredientData) => {
     setVideo([...video, data]);
     itemCompra(data, params.id);
+    handleForm();
     console.log(video);
   };
 
@@ -44,14 +47,30 @@ export const ListaDeCompras = () => {
   }, []);
 
   // console.log(tata);
-  let detalles;
+  let detalles = tata.purchaseDetails;
 
-  if (!tata.purchaseDetails || !tata.purchaseDetails.length) {
-    return (
-      <>
+  const handleForm = () => {
+    setOpenForm(!openForm);
+  };
+
+  return (
+    <>
+      {detalles ? (
         <div>
           <h1>lista de compras</h1>
+          <button onClick={() => setOpenForm(true)}>otro ingrediente</button>
+          {detalles.map((item) => (
+            <div key={item.purchaseDetailId}>
+              <p>{item.ingredientName}</p>
+              <p>{item.ingredientQty}</p>
+              <p>{item.ingredientPrice}</p>
+            </div>
+          ))}
         </div>
+      ) : (
+        <div>karen</div>
+      )}
+      <Modal isOpen={openForm} setIsOpen={handleForm}>
         <Formulario onSubmit={handleSubmit(sender)}>
           <div className="datos">
             <Input
@@ -83,70 +102,37 @@ export const ListaDeCompras = () => {
             </div>
           </div>
         </Formulario>
-      </>
+      </Modal>
+    </>
+  );
+
+  /* if (!tata.purchaseDetails || !tata.purchaseDetails.length) {
+    return (
+      <>
+        <div>
+          <h1>lista de compras</h1>
+        </div>*/
+
+  /*</>
     );
   } else {
     setVideo(tata.purchaseDetails);
-  }
-
-  console.log(detalles);
-
-  return (
-    <>
-      <div>
-        <h1>lista de compras</h1>
-      </div>
-      <Formulario onSubmit={handleSubmit(sender)}>
-        <div className="datos">
-          <Input
-            register={register}
-            name="ingredientName"
-            error={errors.ingredientName?.message}
-            label="Ingrediente"
-          />
-          <Input
-            register={register}
-            name="ingredientQty"
-            error={errors.ingredientQty?.message}
-            label="Cantidad"
-          />
-          <Input
-            register={register}
-            name="measurementUnit"
-            error={errors.measurementUnit?.message}
-            label="Unidad"
-          />
-          <Input
-            register={register}
-            name="ingredientPrice"
-            error={errors.ingredientPrice?.message}
-            label="Precio"
-          />
-          <div className="accion">
-            <Button type="submit">+</Button>
-          </div>
+    return (
+      <>
+        <div>
+          <h1>lista de compras</h1>
         </div>
-      </Formulario>
-      <div style={{ width: "100%", height: "200px", backgroundColor: "red" }}>
-        {/* {detalles.length ? (
-          detalles.map((item) => (
-            <div key={item.purchaseDetailId}>
+
+        <div style={{ width: "100%", height: "200px", backgroundColor: "red" }}>
+          {tata.purchaseDetails.map((item) => (
+              <div key={item.purchaseDetailId}>
               <p>{item.ingredientName}</p>
               <p>{item.ingredientQty}</p>
               <p>{item.ingredientPrice}</p>
             </div>
-          ))
-        ) : (
-          <div>sin datos</div>
-        )} */}
-        {video.map((item) => (
-          <div key={item.purchaseDetailId}>
-            <p>{item.ingredientName}</p>
-            <p>{item.ingredientQty}</p>
-            <p>{item.ingredientPrice}</p>
-          </div>
-        ))}
-      </div>
-    </>
-  );
+          ))}
+        </div>
+      </>
+    );
+  } */
 };

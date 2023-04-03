@@ -1,0 +1,34 @@
+.aside__list {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--yellow-500-ligth);
+  color: var(--primary-font);
+}
+
+.list__item {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list__item:hover {
+  background-color: var(--primary);
+  color: var(--secondary-font);
+}
+
+.item__title {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.item__title p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

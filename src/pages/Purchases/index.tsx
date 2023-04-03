@@ -12,6 +12,7 @@ import "./purchase.style.css";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { PurchaseCard } from "../../components/PurchaseCard";
 
 const signInSchema = yup.object().shape({
   ingredientName: yup.string().required("Campo obrigatório"),
@@ -29,7 +30,7 @@ interface ingredientData {
 
 export const Purchases = () => {
   const navigate = useNavigate();
-  // const [compra, setCompra] = useState({} as Purchase)
+  const [miCompra, setMiCompra] = useState({} as Purchase);
   const { purchases, Compra, itemCompra, eliminaCompra, Shopping } =
     usePurchase();
   // const compra = purchases[0];
@@ -70,7 +71,7 @@ export const Purchases = () => {
       <div>
         <h1>hola</h1>
         <button onClick={() => handlecompra()}>nueva compra</button>
-        <div className="list-card">
+        {/* <div className="list-card">
           {purchases.map((item) => (
             <div className="item-card" key={item.purchaseId}>
               <div
@@ -87,7 +88,8 @@ export const Purchases = () => {
               </button>
             </div>
           ))}
-        </div>
+        </div> */}
+        {<PurchaseCard setMiCompra={setMiCompra} />}
       </div>
       <div>
         <Outlet />
