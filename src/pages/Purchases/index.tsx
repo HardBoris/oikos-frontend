@@ -33,14 +33,15 @@ export const Purchases = () => {
   const [miCompra, setMiCompra] = useState({} as Purchase);
   const { purchases, Compra, itemCompra, eliminaCompra, Shopping } =
     usePurchase();
+  const [counter, setCounter] = useState(purchases.length);
   // const compra = purchases[0];
   const fecha = (objeto: Purchase) => objeto.purchaseDate.split("T")[0];
   // const [shoppingList, setShoppingList] = useState(purchases);
   // const [ssd, setSsd] = useState(purchases);
 
-  useEffect(() => {
+  /* useEffect(() => {
     Shopping();
-  }, [Shopping, purchases]);
+  }, [Shopping, purchases]); */
 
   // console.log(fecha);
 
@@ -56,6 +57,7 @@ export const Purchases = () => {
 
   const handlecompra = () => {
     Compra();
+    setCounter(counter + 1);
     // Shopping();
   };
 
@@ -66,9 +68,13 @@ export const Purchases = () => {
     // setSsd(ssd.filter((item) => item.purchaseId !== id));
   };
 
+  useEffect(() => {
+    Shopping();
+  }, [counter]);
+
   return (
     <>
-      <div>
+      <div className="ambito">
         <h1>hola</h1>
         <button onClick={() => handlecompra()}>nueva compra</button>
         {/* <div className="list-card">

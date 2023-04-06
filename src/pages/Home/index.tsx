@@ -24,9 +24,9 @@ export const Home = () => {
   const [title, setTitle] = useState("Oikos");
   const [openDesire, setOpenDesire] = useState(false);
 
-  useEffect(() => {
+  /* useEffect(() => {
     Shopping();
-  }, []);
+  }, []); */
 
   const handleOut = () => {
     handleDesire();
