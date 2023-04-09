@@ -55,7 +55,7 @@ export const ListaDeCompras = () => {
 
   return (
     <>
-      {detalles ? (
+      {detalles.length !== 0 ? (
         <div>
           <h1>lista de compras</h1>
           <button onClick={() => setOpenForm(true)}>otro ingrediente</button>

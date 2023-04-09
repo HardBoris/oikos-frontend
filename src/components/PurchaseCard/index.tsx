@@ -1,24 +1,34 @@
-// import { FaPlay } from "react-icons/fa";
-import { Purchase, usePurchase } from "../../context/PurchaseContext";
+import { useEffect } from "react";
+import { usePurchase } from "../../context/PurchaseContext";
 import { ItemCard } from "./itemCard";
 import "./style.css";
 
 interface IPurchaseCardProps {
-  setMiCompra: (item: Purchase) => void;
+  handler: () => void;
 }
 
-export const PurchaseCard = ({ setMiCompra }: IPurchaseCardProps) => {
-  const { purchases, eliminaCompra } = usePurchase();
-  // const { hinario, mensaje, filteredHymns } = useHymns();
+export const PurchaseCard = ({ handler }: IPurchaseCardProps) => {
+  const { purchases, eliminaCompra, Shopping } = usePurchase();
+  const Deletar = (id: string) => {
+    eliminaCompra(id);
+    handler();
+  };
+
+  useEffect(() => {
+    Shopping();
+  }, [purchases]);
 
   return (
     <div className="aside__list">
       {purchases.length !== 0 ? (
-        <ItemCard
-          setMiCompra={setMiCompra}
-          lista={purchases}
-          eliminator={eliminaCompra}
-        />
+        purchases.map((item) => (
+          <ItemCard
+            key={item.purchaseId}
+            eliminator={() => Deletar(item.purchaseId)}
+            fecha={item.purchaseDate.split("T")[0]}
+            id={item.purchaseId}
+          />
+        ))
       ) : (
         <div className="aside__msg">
           <p>Nada</p>

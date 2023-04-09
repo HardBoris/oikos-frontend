@@ -1,37 +1,30 @@
 import { useNavigate } from "react-router-dom";
-import { Purchase } from "../../context/PurchaseContext";
 
 interface ICardProps {
-  setMiCompra: (item: Purchase) => void;
-  eliminator: (id: string) => void;
-  lista: Purchase[];
+  fecha: string;
+  id: string;
+  eliminator: () => void;
 }
 
-export const ItemCard = ({ setMiCompra, eliminator, lista }: ICardProps) => {
+export const ItemCard = ({ eliminator, fecha, id }: ICardProps) => {
   const navigate = useNavigate();
-  const fecha = (objeto: Purchase) => objeto.purchaseDate.split("T")[0];
 
   return (
     <>
-      {lista.map((item: Purchase) => (
-        <div
-          className="list__item"
-          key={item.purchaseId}
-          role="button"
-          onClick={() => navigate(`/purchases/${item.purchaseId}`)}
-          style={{ cursor: "pointer" }}
-        >
-          <div className="item__title">
-            <p>{fecha(item)}</p>
-          </div>
-          <button
-            className="eliminator-button"
-            onClick={() => eliminator(item.purchaseId)}
+      <div className="list__item">
+        <div className="item__title">
+          <div
+            role="button"
+            onClick={() => navigate(`/purchases/${id}`)}
+            style={{ cursor: "pointer" }}
           >
-            X
-          </button>
+            {fecha}
+          </div>
         </div>
-      ))}
+        <button className="eliminator-button" onClick={eliminator}>
+          X
+        </button>
+      </div>
     </>
   );
 };
