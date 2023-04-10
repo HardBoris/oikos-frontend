@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { usePurchase } from "../../context/PurchaseContext";
+import { useEffect, useState } from "react";
+import { Purchase, usePurchase } from "../../context/PurchaseContext";
 import { ItemCard } from "./itemCard";
 import "./style.css";
 
@@ -9,19 +9,22 @@ interface IPurchaseCardProps {
 
 export const PurchaseCard = ({ handler }: IPurchaseCardProps) => {
   const { purchases, eliminaCompra, Shopping } = usePurchase();
+  const [miLista, setMiLista] = useState(purchases);
   const Deletar = (id: string) => {
     eliminaCompra(id);
+    setMiLista(miLista.filter((item) => item.purchaseId !== id));
     handler();
   };
 
   useEffect(() => {
     Shopping();
-  }, [purchases]);
+    setMiLista(purchases);
+  }, []);
 
   return (
-    <div className="aside__list">
-      {purchases.length !== 0 ? (
-        purchases.map((item) => (
+    <div className="purchases__list">
+      {miLista.length !== 0 ? (
+        miLista.map((item) => (
           <ItemCard
             key={item.purchaseId}
             eliminator={() => Deletar(item.purchaseId)}

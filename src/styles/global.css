@@ -20,24 +20,41 @@ ul {
 }
 
 :root {
-  --yellow-500-ligth: #ffff00;
-  --blue-200-200: #7a7acc;
-  --secondary: #5252cc;
-  --primary-font: #000033;
-  --blue-100-ligth: #ccccff;
-  --primary: #009999;
-  --secondary-font: #e6ffff;
-  --warning: #ff0000;
+  --primary-dark: hsl(180, 100%, 10%);
+  --primary-25: hsl(180, 100%, 25%);
+  --primary: hsl(180, 100%, 50%);
+  --primary-75: hsl(180, 100%, 75%);
+  --primary-ligth: hsl(180, 100%, 90%);
+  --secondary-dark: hsl(240, 100%, 10%);
+  --secondary-25: hsl(240, 100%, 25%);
+  --secondary: hsl(240, 100%, 50%);
+  --secondary-75: hsl(240, 100%, 95%);
+  --secondary-ligth: hsl(240, 100%, 100%);
+  --attention-dark: hsl(60, 100%, 10%);
+  --attention-25: hsl(60, 100%, 25%);
+  --attention: hsl(60, 100%, 50%);
+  --attention-75: hsl(60, 100%, 75%);
+  --attention-ligth: hsl(60, 100%, 90%);
+  --warning-dark: hsl(0, 100%, 10%);
+  --warning-25: hsl(0, 100%, 25%);
+  --warning: hsl(0, 100%, 50%);
+  --warning-75: hsl(0, 100%, 75%);
+  --warning-ligth: hsl(0, 100%, 90%);
+  --success-dark: hsl(120, 100%, 10%);
+  --success-25: hsl(120, 100%, 25%);
+  --success: hsl(120, 100%, 50%);
+  --success-75: hsl(120, 100%, 75%);
+  --success-ligth: hsl(120, 100%, 90%);
   --modal-overlay: rgba(122, 122, 204, 0.3);
-  --primary-shadow: rgba(0, 153, 153, 0.3);
-  --secondary-shadow: rgba(82, 82, 204, 0.3);
+  --primary-shadow: hsl(180, 100%, 50%, 0.5);
+  --secondary-shadow: hsl(240, 100%, 50%, 0.5);
 }
 
 body {
   width: 100vw;
   height: 100vh;
   margin: auto;
-  color: var(--primary-font);
+  color: var(--primary-dark);
   background-color: var(--secondary);
 }
 

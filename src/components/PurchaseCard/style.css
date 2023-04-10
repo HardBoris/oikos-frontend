@@ -1,23 +1,27 @@
-.aside__list {
+.purchases__list {
   width: 100%;
   height: auto;
-  /* overflow: auto; */
-  background-color: var(--yellow-500-ligth);
-  color: var(--primary-font);
+  padding: 10px 0;
+  background-color: var(--secondary);
+  color: var(--secondary-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .list__item {
-  width: 100%;
+  width: 98%;
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid var(--primary);
+  background-color: var(--secondary-ligth);
+  border-bottom: 1px solid var(--secondary);
 }
 
 .list__item:hover {
-  background-color: var(--primary);
-  color: var(--secondary-font);
+  background-color: var(--secondary-75);
+  color: var(--secondary-dark);
 }
 
 .item__title {
@@ -37,6 +41,11 @@
 .eliminator-button {
   width: 40px;
   height: 40px;
-  background-color: red;
-  /* border: 1px solid blue; */
+  background-color: var(--warning-75);
+  color: var(--attention);
+}
+
+.eliminator-button:hover {
+  background-color: var(--warning);
+  color: var(--attention-75);
 }

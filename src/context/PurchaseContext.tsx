@@ -88,7 +88,6 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         },
       })
       .then((response) => {
-        console.log(response.data.purchaseDetails);
         setTata(response.data);
       })
       .catch((error) => console.log(error));

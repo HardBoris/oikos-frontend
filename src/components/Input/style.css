@@ -21,7 +21,7 @@
   margin: auto;
   padding-left: 0.5rem;
   border-radius: 0.5rem;
-  border: 2px solid var(--blue-100-ligth);
-  background-color: var(--turqoise-100-ligth);
-  color: var(--blue-full-dark);
+  border: 2px solid var(--primary-75);
+  background-color: var(--primary);
+  color: var(--primary-dark);
 }

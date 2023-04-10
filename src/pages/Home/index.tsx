@@ -51,9 +51,7 @@ export const Home = () => {
         />
       </header>
       <main>
-        <section>
-          <Outlet />
-        </section>
+        <Outlet />
       </main>
       <footer>
         <div id="barney">

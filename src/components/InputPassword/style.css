@@ -37,9 +37,9 @@
   margin: auto;
   padding: 0 0.5rem;
   border-radius: 0.5rem;
-  border: 2px solid var(--blue-100-ligth);
-  background-color: rgb(232, 240, 254);
-  color: var(--blue-full-dark);
+  border: 2px solid var(--primary-75);
+  background-color: var(--primary-ligth);
+  color: var(--primary-dark);
 }
 
 .input__input {
@@ -49,8 +49,8 @@
   /* padding-left: 0.5rem; */
   /* border-radius: 0.5rem; */
   border: none;
-  background-color: var(--turqoise-100-ligth);
-  color: var(--blue-full-dark);
+  background-color: var(--primary-ligth);
+  color: var(--primary-dark);
 }
 
 .input__eye {
@@ -66,7 +66,7 @@
   margin: auto;
   padding-left: 0.5rem;
   border-radius: 0.5rem;
-  border: 2px solid var(--blue-100-ligth);
-  background-color: var(--turqoise-100-ligth);
-  color: var(--blue-full-dark);
+  border: 2px solid var(--primary-ligth);
+  background-color: var(--primary);
+  color: var(--primary-dark);
 }

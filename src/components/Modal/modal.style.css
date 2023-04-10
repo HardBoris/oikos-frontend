@@ -23,7 +23,7 @@
   height: 100vh;
   position: absolute;
   top: 0;
-  background: var(--modal-overlay);
+  background: var(--secondary-shadow);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,7 @@
 
 .modal-box {
   display: block;
-  background: white;
+  background: var(--primary-ligth);
   /* width: 70%; */
   /* height: 70%; */
   padding: 1rem;

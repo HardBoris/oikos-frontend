@@ -3,8 +3,7 @@ nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border-bottom: 1px solid var(--primary-font);
-  /* box-shadow: 0 5px 10px var(--secondary); */
+  border-bottom: 1px solid var(--primary-dark);
 }
 
 .navigator {
@@ -16,7 +15,7 @@ nav {
 
 a {
   font-size: calc(10px + 1vmin);
-  color: var(--secondary-font);
+  color: var(--primary-dark);
   text-decoration: none;
   font-weight: bold;
 }

@@ -55,7 +55,7 @@ export const ListaDeCompras = () => {
 
   return (
     <>
-      {detalles.length !== 0 ? (
+      {detalles ? (
         <div>
           <h1>lista de compras</h1>
           <button onClick={() => setOpenForm(true)}>otro ingrediente</button>
@@ -105,34 +105,4 @@ export const ListaDeCompras = () => {
       </Modal>
     </>
   );
-
-  /* if (!tata.purchaseDetails || !tata.purchaseDetails.length) {
-    return (
-      <>
-        <div>
-          <h1>lista de compras</h1>
-        </div>*/
-
-  /*</>
-    );
-  } else {
-    setVideo(tata.purchaseDetails);
-    return (
-      <>
-        <div>
-          <h1>lista de compras</h1>
-        </div>
-
-        <div style={{ width: "100%", height: "200px", backgroundColor: "red" }}>
-          {tata.purchaseDetails.map((item) => (
-              <div key={item.purchaseDetailId}>
-              <p>{item.ingredientName}</p>
-              <p>{item.ingredientQty}</p>
-              <p>{item.ingredientPrice}</p>
-            </div>
-          ))}
-        </div>
-      </>
-    );
-  } */
 };

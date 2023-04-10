@@ -5,20 +5,7 @@ import "./purchase.style.css";
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { PurchaseCard } from "../../components/PurchaseCard";
-
-/* const signInSchema = yup.object().shape({
-  ingredientName: yup.string().required("Campo obrigatório"),
-  ingredientQty: yup.string().required("Campo obrigatório"),
-  measurementUnit: yup.string().required("Campo obrigatório"),
-  ingredientPrice: yup.string().required("Campo obrigatório"),
-}); */
-
-/* interface ingredientData {
-  ingredientName: string;
-  ingredientQty: string;
-  measurementUnit: string;
-  ingredientPrice: string;
-} */
+import { Button } from "../../components/Button";
 
 export const Purchases = () => {
   const { purchases, Compra, Shopping } = usePurchase();
@@ -40,9 +27,11 @@ export const Purchases = () => {
 
   return (
     <>
-      <div className="ambito">
-        <h1>hola</h1>
-        <button onClick={() => handlecompra()}>nueva compra</button>
+      <div className="purchases">
+        {/* <h1>hola</h1> */}
+        <Button className="adicionar" onClick={() => handlecompra()}>
+          nueva compra
+        </Button>
         {<PurchaseCard handler={handleElimina} />}
       </div>
       <div>

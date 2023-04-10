@@ -2,13 +2,14 @@
   width: 400px;
   height: 600px;
   border-radius: 20px;
-  border: 2px solid red;
 }
+
 .login-intro {
   height: 130px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.5rem;
 }
 
 .login-form {
@@ -27,14 +28,30 @@
   /* display: flex;
   justify-content: center;
   align-items: center; */
-  color: var(--turquoise-500-400);
-  text-shadow: 2px 2px 5px var(--blue-full-dark);
+  color: var(--primary-ligth);
+  text-shadow: 2px 2px 5px var(--primary-dark);
   font-size: 1.5rem;
   text-align: center;
 }
 
 .fields {
   width: 100%;
+}
+
+.column-actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.positivo {
+  width: 50%;
+}
+
+.positivo:hover {
+  background-color: var(--primary);
+  color: var(--primary-dark);
 }
 
 @media (min-width: 430px) and (max-width: 768px) {
