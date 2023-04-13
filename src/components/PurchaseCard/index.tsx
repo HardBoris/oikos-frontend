@@ -23,8 +23,8 @@ export const PurchaseCard = ({ handler }: IPurchaseCardProps) => {
 
   return (
     <div className="purchases__list">
-      {miLista.length !== 0 ? (
-        miLista.map((item) => (
+      {purchases ? (
+        purchases.map((item) => (
           <ItemCard
             key={item.purchaseId}
             eliminator={() => Deletar(item.purchaseId)}

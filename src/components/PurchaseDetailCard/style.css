@@ -1,0 +1,51 @@
+.purchases__list {
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+  background-color: var(--secondary);
+  color: var(--secondary-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list__item {
+  width: 98%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-ligth);
+  border-bottom: 1px solid var(--secondary);
+}
+
+.list__item:hover {
+  background-color: var(--secondary-75);
+  color: var(--secondary-dark);
+}
+
+.item__title {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.item__title p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.eliminator-button {
+  width: 40px;
+  height: 40px;
+  background-color: var(--warning-75);
+  color: var(--attention);
+}
+
+.eliminator-button:hover {
+  background-color: var(--warning);
+  color: var(--attention-75);
+}

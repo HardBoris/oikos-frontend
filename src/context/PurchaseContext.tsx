@@ -14,7 +14,7 @@ interface PurchaseProviderProps {
   children: ReactNode;
 }
 
-interface PurchaseDetail {
+export interface PurchaseDetail {
   purchaseDetailId: string;
   purchaseId: string;
   ingredientName: string;
@@ -41,7 +41,7 @@ interface PurchaseContextData {
   purchases: Purchase[];
   ingredient: PurchaseDetail;
   purchaseDetails: PurchaseDetail[];
-  tata: Purchase;
+  thisPurchase: Purchase;
   Shopping: () => void;
   shoppingList: (purchaseId: string) => void;
   Compra: () => void;
@@ -59,8 +59,8 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
   const history = useNavigate();
   const { token } = useAuth();
   const [purchases, setPurchases] = useState<Purchase[]>([]);
-  const [tata, setTata] = useState<Purchase>({} as Purchase);
-  const [purchaseDetails, setPurchaseDetail] = useState<PurchaseDetail[]>([]);
+  const [thisPurchase, setThisPurchase] = useState<Purchase>({} as Purchase);
+  const [purchaseDetails, setPurchaseDetails] = useState<PurchaseDetail[]>([]);
   const [ingredient, setIngredient] = useState<PurchaseDetail>(
     {} as PurchaseDetail
   );
@@ -73,7 +73,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         },
       })
       .then((response) => {
-        setPurchases(response.data);
+        setPurchases(response.data.reverse());
       })
       .catch((error) => {
         console.log(error);
@@ -88,7 +88,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         },
       })
       .then((response) => {
-        setTata(response.data);
+        setThisPurchase(response.data);
       })
       .catch((error) => console.log(error));
   };
@@ -145,7 +145,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         purchases,
         ingredient,
         purchaseDetails,
-        tata,
+        thisPurchase,
         shoppingList,
         Shopping,
         Compra,

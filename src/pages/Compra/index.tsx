@@ -8,6 +8,7 @@ import { usePurchase } from "../../context/PurchaseContext";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
+import { PurchaseDetailCard } from "../../components/PurchaseDetailCard";
 
 const signInSchema = yup.object().shape({
   ingredientName: yup.string().required("Campo obrigatório"),
@@ -25,9 +26,9 @@ interface ingredientData {
 
 export const ListaDeCompras = () => {
   const [openForm, setOpenForm] = useState(false);
-  const [video, setVideo] = useState([]);
+  // const [video, setVideo] = useState([]);
   const params = useParams();
-  const { itemCompra, shoppingList, tata } = usePurchase();
+  const { itemCompra, shoppingList, thisPurchase } = usePurchase();
   const {
     formState: { errors },
     register,
@@ -35,19 +36,20 @@ export const ListaDeCompras = () => {
   } = useForm<ingredientData>({ resolver: yupResolver(signInSchema) });
 
   const sender = (data: ingredientData) => {
-    setVideo([...video, data]);
+    // setVideo([...video, data]);
     itemCompra(data, params.id);
+    shoppingList(params.id);
     handleForm();
-    console.log(video);
+    // console.log(video);
   };
 
   useEffect(() => {
     shoppingList(params.id);
-    setVideo(tata.purchaseDetails);
+    // setVideo(tata.purchaseDetails);
   }, []);
 
   // console.log(tata);
-  let detalles = tata.purchaseDetails;
+  let detalles = thisPurchase.purchaseDetails;
 
   const handleForm = () => {
     setOpenForm(!openForm);
@@ -60,11 +62,7 @@ export const ListaDeCompras = () => {
           <h1>lista de compras</h1>
           <button onClick={() => setOpenForm(true)}>otro ingrediente</button>
           {detalles.map((item) => (
-            <div key={item.purchaseDetailId}>
-              <p>{item.ingredientName}</p>
-              <p>{item.ingredientQty}</p>
-              <p>{item.ingredientPrice}</p>
-            </div>
+            <PurchaseDetailCard key={item.purchaseDetailId} />
           ))}
         </div>
       ) : (
