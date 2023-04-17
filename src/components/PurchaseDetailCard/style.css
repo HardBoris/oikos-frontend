@@ -12,8 +12,9 @@
 .list__item {
   width: 98%;
   height: 60px;
+  padding: 0 2vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: var(--secondary-ligth);
   border-bottom: 1px solid var(--secondary);
@@ -24,18 +25,43 @@
   color: var(--secondary-dark);
 }
 
-.item__title {
+.item__description {
   width: 90%;
   height: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 }
 
-.item__title p {
+.item__name {
+  width: 30%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.cantidad {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item__qty {
+  width: 48%;
+  text-align: right;
+}
+
+.item__unit {
+  width: 48%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item__cost {
+  width: 10%;
+  text-align: right;
 }
 
 .eliminator-button {

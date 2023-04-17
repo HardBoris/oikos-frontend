@@ -28,6 +28,7 @@ export interface Purchase {
   purchaseDate: string;
   userId: string;
   purchaseDetails: PurchaseDetail[];
+  purchaseTotal: number;
 }
 
 interface ingredientData {

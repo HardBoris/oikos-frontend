@@ -24,7 +24,7 @@
   color: var(--secondary-dark);
 }
 
-.item__title {
+.item__description {
   width: 90%;
   height: 100%;
   display: flex;
@@ -32,10 +32,14 @@
   align-items: center;
 }
 
-.item__title p {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.item__date {
+  width: 30%;
+  cursor: pointer;
+}
+
+.item__total {
+  width: 30%;
+  text-align: right;
 }
 
 .eliminator-button {
@@ -43,6 +47,7 @@
   height: 40px;
   background-color: var(--warning-75);
   color: var(--attention);
+  cursor: pointer;
 }
 
 .eliminator-button:hover {

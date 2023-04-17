@@ -30,6 +30,7 @@ export const PurchaseCard = ({ handler }: IPurchaseCardProps) => {
             eliminator={() => Deletar(item.purchaseId)}
             fecha={item.purchaseDate.split("T")[0]}
             id={item.purchaseId}
+            total={item.purchaseTotal}
           />
         ))
       ) : (

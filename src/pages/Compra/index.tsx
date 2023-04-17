@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
 import { PurchaseDetailCard } from "../../components/PurchaseDetailCard";
+import "./compra.style.css";
 
 const signInSchema = yup.object().shape({
   ingredientName: yup.string().required("Campo obrigatório"),
@@ -46,7 +47,7 @@ export const ListaDeCompras = () => {
   useEffect(() => {
     shoppingList(params.id);
     // setVideo(tata.purchaseDetails);
-  }, []);
+  }, [params.id]);
 
   // console.log(tata);
   let detalles = thisPurchase.purchaseDetails;
@@ -58,12 +59,13 @@ export const ListaDeCompras = () => {
   return (
     <>
       {detalles ? (
-        <div>
+        <div className="compra">
           <h1>lista de compras</h1>
           <button onClick={() => setOpenForm(true)}>otro ingrediente</button>
-          {detalles.map((item) => (
-            <PurchaseDetailCard key={item.purchaseDetailId} />
-          ))}
+          <PurchaseDetailCard />
+          <div>
+            {detalles.reduce((a, b) => a + b.ingredientPrice, 0).toFixed(2)}
+          </div>
         </div>
       ) : (
         <div>karen</div>

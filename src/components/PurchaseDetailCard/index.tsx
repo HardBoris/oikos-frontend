@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   Purchase,
   usePurchase,
@@ -13,20 +14,29 @@ import "./style.css";
 
 export const PurchaseDetailCard =
   (/* { handler }: IPurchaseDetailCardProps */) => {
-    const { thisPurchase, eliminaCompra, Shopping } = usePurchase();
+    const params = useParams();
+    const { thisPurchase, eliminaCompra, Shopping, shoppingList } =
+      usePurchase();
     const [thisShoppingList, setThisShoppingList] = useState<PurchaseDetail[]>(
       thisPurchase.purchaseDetails
     );
+    // const [purchaseCost, setPurchaseCost] = useState(0);
     const Deletar = (id: string) => {
       eliminaCompra(id);
       // setMiLista(miLista.filter((item) => item.purchaseId !== id));
       // handler();
     };
 
+    /* if (thisShoppingList.length !== 0) {
+      setPurchaseCost(
+        thisShoppingList.reduce((a, b) => a + b.ingredientPrice, 0)
+      );
+    } */
+
     useEffect(() => {
-      Shopping();
+      shoppingList(params.id);
       // setMiLista(purchases);
-    }, []);
+    }, [params.id]);
 
     return (
       <div className="purchases__list">
@@ -46,6 +56,7 @@ export const PurchaseDetailCard =
             <p>Nada</p>
           </div>
         )}
+        {/* <div>{purchaseCost}</div> */}
       </div>
     );
   };
