@@ -1,6 +1,6 @@
 .purchases__list {
   width: 100%;
-  height: auto;
+  /* height: auto; */
   padding: 10px 0;
   background-color: var(--secondary);
   color: var(--secondary-dark);

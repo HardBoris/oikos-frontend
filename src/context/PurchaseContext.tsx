@@ -40,7 +40,7 @@ interface ingredientData {
 
 interface PurchaseContextData {
   purchases: Purchase[];
-  ingredient: PurchaseDetail;
+  ingredient: {};
   purchaseDetails: PurchaseDetail[];
   thisPurchase: Purchase;
   Shopping: () => void;
@@ -62,9 +62,7 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
   const [purchases, setPurchases] = useState<Purchase[]>([]);
   const [thisPurchase, setThisPurchase] = useState<Purchase>({} as Purchase);
   const [purchaseDetails, setPurchaseDetails] = useState<PurchaseDetail[]>([]);
-  const [ingredient, setIngredient] = useState<PurchaseDetail>(
-    {} as PurchaseDetail
-  );
+  const [ingredient, setIngredient] = useState({});
 
   const Shopping = async () => {
     await api
@@ -124,6 +122,8 @@ const PurchaseProvider = ({ children }: PurchaseProviderProps) => {
         },
       })
       .then((response) => {
+        setIngredient(response.data);
+        shoppingList(response.data.purchase);
         console.log(response.data);
       })
       .catch((error) => console.log(error));

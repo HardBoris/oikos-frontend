@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { Button } from "../../components/Button";
 import { Formulario } from "../../components/Form";
 import { Input } from "../../components/Input";
-import { usePurchase } from "../../context/PurchaseContext";
+import { PurchaseDetail, usePurchase } from "../../context/PurchaseContext";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
@@ -27,9 +27,18 @@ interface ingredientData {
 
 export const ListaDeCompras = () => {
   const [openForm, setOpenForm] = useState(false);
-  // const [video, setVideo] = useState([]);
   const params = useParams();
-  const { itemCompra, shoppingList, thisPurchase } = usePurchase();
+  const { itemCompra, shoppingList, thisPurchase, ingredient } = usePurchase();
+  const [estaLista, setEstaLista] = useState<PurchaseDetail[]>(
+    thisPurchase.purchaseDetails
+  );
+
+  useEffect(() => {
+    shoppingList(params.id);
+  }, []);
+
+  console.log(params);
+
   const {
     formState: { errors },
     register,
@@ -37,20 +46,11 @@ export const ListaDeCompras = () => {
   } = useForm<ingredientData>({ resolver: yupResolver(signInSchema) });
 
   const sender = (data: ingredientData) => {
-    // setVideo([...video, data]);
+    console.log(data);
     itemCompra(data, params.id);
     shoppingList(params.id);
     handleForm();
-    // console.log(video);
   };
-
-  useEffect(() => {
-    shoppingList(params.id);
-    // setVideo(tata.purchaseDetails);
-  }, [params.id]);
-
-  // console.log(tata);
-  let detalles = thisPurchase.purchaseDetails;
 
   const handleForm = () => {
     setOpenForm(!openForm);
@@ -58,13 +58,14 @@ export const ListaDeCompras = () => {
 
   return (
     <>
-      {detalles ? (
+      {estaLista ? (
         <div className="compra">
           <h1>lista de compras</h1>
           <button onClick={() => setOpenForm(true)}>otro ingrediente</button>
           <PurchaseDetailCard />
           <div>
-            {detalles.reduce((a, b) => a + b.ingredientPrice, 0).toFixed(2)}
+            Total de esta compra:{" "}
+            {estaLista.reduce((a, b) => a + b.ingredientPrice, 0).toFixed(2)}
           </div>
         </div>
       ) : (
